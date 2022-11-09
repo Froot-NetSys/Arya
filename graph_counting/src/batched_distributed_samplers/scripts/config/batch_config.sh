@@ -1,0 +1,23 @@
+bash ./remote_config.sh node8
+bash ./remote_config.sh node9
+bash ./remote_config.sh node10
+bash ./remote_config.sh node11
+bash ./remote_config.sh node12
+bash ./remote_config.sh node13
+bash ./remote_config.sh node14
+bash ./remote_config.sh node15
+bash ./remote_config.sh node16
+bash ./remote_config.sh node17
+bash ./remote_config.sh node18
+bash ./remote_config.sh node19
+bash ./remote_config.sh node20
+bash ./remote_config.sh node21
+bash ./remote_config.sh node22
+bash ./remote_config.sh node23
+bash ./remote_config.sh node24
+bash ./remote_config.sh node25
+bash ./remote_config.sh node26
+bash ./remote_config.sh node27
+bash ./remote_config.sh node28
+bash ./remote_config.sh node29
+

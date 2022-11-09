@@ -1,0 +1,64 @@
+# Graph Counting
+Count number of certain patterns in a large graph
+
+## Quick Test
+```
+make clean ; make all
+mpirun -n 4 -f host ./GraphCounting.out graphs/mico/mico.undigraph patterns/triangle 40000000 40 4
+
+Output:
+raw results after merge nodes (total_prob_inverse, total_sampled_times): 502464449642959.8 40000000
+pattern_nums time_consumed(us) sampling_times sampling/second
+12561611.24107399 2065807 40000000 19362893.04857617
+
+
+## Usage:
+GraphCounting graph_file subgraph_file sampling_times(separated by \',\' 10000,20000) #threads(separated by \',\' 1,4) #processes
+
+* graph_file: edge list of the large graph ; sorted by vertex ids, each edge has two copies (e.g., (1,2), (2,1)), example: 
+```
+1 2
+1 3
+2 1
+3 1
+```
+* subgraph_file: pattern to count ; example: ./patterns/triangle_2_star
+    * the subgraph_file is supposed to be output from the graph_decomposing logic
+```
+# first line: num of odd-cycles (k), num of stars (j) in the pattern
+# following k lines: odd-cycles
+# following j lines: stars (the first vertex is the center)
+# following lines: remaining edges to test
+1 1   # indicates 1 odd-cycle, 1 star
+1 2 3 # the first and only odd-cycle
+4 5 6 # the first and only star
+2 4   # only one remaining edge
+```
+
+## MPI Installation
+We use MPI and multi-threading for load balancer of the replicated graph setting.
+
+First set up ssh between node0 and other nodes.
+
+MPI install:
+
+Download MPICH3 (http://www.mpich.org/downloads/) from mpich.org and extract the contents of the MPICH package to some temporary location, before compiling the source code to binaries. We download MPICH v3.2 (http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz).
+```
+cd {the-directory-containing-downloaded-mpich-package}
+tar -xvzf mpich-3.2.1.tar.gz
+cd mpich-3.2.1
+```
+Choose a directory for installing MPICH3 (we use /usr/local/mpich), and then compile and install MPICH3.
+```
+./configure -prefix=/usr/local/mpich --disable-fortran
+sudo make
+sudo make install
+```
+Append the following two environment variables to the file $HOME/.bashrc. Here, $HOME, ~ and /home/{your_username} are equivalent, which is your home folder.
+```
+export MPICH_HOME=/usr/local/mpich
+export PATH=$PATH:$MPICH_HOME/bin
+```
+Compile the file with the command source **$HOME/.bashrc** (You may do this later after adding more enviromental variables).
+
+

@@ -1,4 +1,4 @@
-# README
+# Arya
 Major components include:
 * graph_decompose: subgraph decomposing logic
 * graph_counting: sampling to count logic
@@ -8,6 +8,14 @@ Major components include:
 Count number of certain patterns in a large graph
 
 ## Quick Test
+Single Machine multi-threading setting:
+```
+cd graph_counting/src/{branch}
+make clean ; make all
+./GraphCounting.out ../../graphs/mico/mico.undigraph ../../patterns/triangle 40000000 40
+```
+
+Distributed Replicated Graph setting:
 ```
 cd graph_counting/src/{branch}
 make clean ; make all

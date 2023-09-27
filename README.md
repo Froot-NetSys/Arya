@@ -1,4 +1,4 @@
-# Arya
+# Arya: Arbitrary Graph Pattern Mining with Decomposition-based Sampling
 Major components include:
 * graph_decompose: subgraph decomposing logic
 * graph_counting: sampling to count logic

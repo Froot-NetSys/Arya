@@ -4,6 +4,7 @@ Major components include:
 * graph_counting: sampling to count logic
 * peregrine: a previous enumerating work as baseline
 
+Details can be found here: [Arya (NSDI'23)](https://www.usenix.org/conference/nsdi23/presentation/zhu)
 # Graph Counting
 Count number of certain patterns in a large graph
 
